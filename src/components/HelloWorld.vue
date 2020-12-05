@@ -25,7 +25,7 @@
             <span v-if="loading" >hello</span>
             <span v-else>oho</span>
         </Button>
-
+        <Icon type="md-add" />
     </div>
 </template>
 

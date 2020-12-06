@@ -1,15 +1,21 @@
 import Vue from 'vue'
-import App from './App.vue'
+import App from './components/App.vue'
+import './assets/fonts/iconfont.css'
 import iView from 'iview'
 import 'iview/dist/styles/iview.css'
 
+import store from './store/store'
+import router from './routes/router'
+
 Vue.config.productionTip = false
 // 全局配置iview的一些属性
-//Vue.use(iView)
 Vue.use(iView,{
   transfer:true,  // 将浮层放置在body内
   size:'large' // 设置所有带size属性的组件的尺寸
 })
 new Vue({
-  render: h => h(App),
-}).$mount('#app')
+  el:'#app',
+  router, // 将router注册到根组件
+  store, // 将store挂载到全局
+  render:h => h(App)
+})

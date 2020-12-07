@@ -7,254 +7,256 @@
                 </div>
             </div>
         </Tooltip>
+        <div class="wrap">
+            <div class="cover">
+                <img src="../assets/imgs/11.jpg" alt="">
+                <img src="../assets/imgs/leadshow.png" alt="">
+            </div>
+            <ul>
+                <li>
+                    <div class="part_one">
+                        <router-link to="/">
+                            <Tooltip content="点击查看大图" placement="top">
+                                <img src="../assets/imgs/1.png" alt="" @click="toBrowse">
+                            </Tooltip>
 
-        <div class="cover">
-            <img src="../assets/imgs/11.jpg" alt="">
-            <img src="../assets/imgs/leadshow.png" alt="">
+                            <p>绝代风华</p>
+                            <span>￥28/m</span>
+                            <span>加入购物车</span>
+                        </router-link>
+                    </div>
+                </li>
+                <li>
+                    <div class="part_one">
+                        <router-link to="/">
+                            <Tooltip content="点击查看大图" placement="top">
+                                <img src="../assets/imgs/2.jpeg" alt="" @click="toBrowse">
+                            </Tooltip>
+                            <p>绝代风华</p>
+                            <span>￥28/m</span>
+                            <span>加入购物车</span>
+                        </router-link>
+                    </div>
+                </li>
+                <li>
+                    <div class="part_one">
+                        <router-link to="/">
+                            <Tooltip content="点击查看大图" placement="top">
+                                <img src="../assets/imgs/2.jpeg" alt="" @click="toBrowse">
+                            </Tooltip>
+                            <p>绝代风华</p>
+                            <span>￥28/m</span>
+                            <span>加入购物车</span>
+                        </router-link>
+                    </div>
+                </li>
+                <li>
+                    <div class="part_one">
+                        <router-link to="/">
+                            <Tooltip content="点击查看大图" placement="top">
+                                <img src="../assets/imgs/2.jpeg" alt="" @click="toBrowse">
+                            </Tooltip>
+                            <p>绝代风华</p>
+                            <span>￥28/m</span>
+                            <span>加入购物车</span>
+                        </router-link>
+                    </div>
+                </li>
+                <li>
+                    <div class="part_one">
+                        <router-link to="/">
+                            <Tooltip content="点击查看大图" placement="top">
+                                <img src="../assets/imgs/2.jpeg" alt="" @click="toBrowse">
+                            </Tooltip>
+                            <p>绝代风华</p>
+                            <span>￥28/m</span>
+                            <span>加入购物车</span>
+                        </router-link>
+                    </div>
+                </li>
+                <li>
+                    <div class="part_one">
+                        <router-link to="/">
+                            <Tooltip content="点击查看大图" placement="top">
+                                <img src="../assets/imgs/2.jpeg" alt="" @click="toBrowse">
+                            </Tooltip>
+                            <p>绝代风华</p>
+                            <span>￥28/m</span>
+                            <span>加入购物车</span>
+                        </router-link>
+                    </div>
+                </li>
+                <li>
+                    <div class="part_one">
+                        <router-link to="/">
+                            <Tooltip content="点击查看大图" placement="top">
+                                <img src="../assets/imgs/2.jpeg" alt="" @click="toBrowse">
+                            </Tooltip>
+                            <p>绝代风华</p>
+                            <span>￥28/m</span>
+                            <span>加入购物车</span>
+                        </router-link>
+                    </div>
+                </li>
+                <li>
+                    <div class="part_one">
+                        <router-link to="/">
+                            <Tooltip content="点击查看大图" placement="top">
+                                <img src="../assets/imgs/2.jpeg" alt="" @click="toBrowse">
+                            </Tooltip>
+                            <p>绝代风华</p>
+                            <span>￥28/m</span>
+                            <span>加入购物车</span>
+                        </router-link>
+                    </div>
+                </li>
+                <li>
+                    <div class="part_one">
+                        <router-link to="/">
+                            <Tooltip content="点击查看大图" placement="top">
+                                <img src="../assets/imgs/2.jpeg" alt="" @click="toBrowse">
+                            </Tooltip>
+                            <p>绝代风华</p>
+                            <span>￥28/m</span>
+                            <span>加入购物车</span>
+                        </router-link>
+                    </div>
+                </li>
+                <li>
+                    <div class="part_one">
+                        <router-link to="/">
+                            <Tooltip content="点击查看大图" placement="top">
+                                <img src="../assets/imgs/2.jpeg" alt="" @click="toBrowse">
+                            </Tooltip>
+                            <p>绝代风华</p>
+                            <span>￥28/m</span>
+                            <span>加入购物车</span>
+                        </router-link>
+                    </div>
+                </li>
+                <li>
+                    <div class="part_one">
+                        <router-link to="/">
+                            <Tooltip content="点击查看大图" placement="top">
+                                <img src="../assets/imgs/2.jpeg" alt="" @click="toBrowse">
+                            </Tooltip>
+                            <p>绝代风华</p>
+                            <span>￥28/m</span>
+                            <span>加入购物车</span>
+                        </router-link>
+                    </div>
+                </li>
+                <li>
+                    <div class="part_one">
+                        <router-link to="/">
+                            <Tooltip content="点击查看大图" placement="top">
+                                <img src="../assets/imgs/2.jpeg" alt="" @click="toBrowse">
+                            </Tooltip>
+                            <p>绝代风华</p>
+                            <span>￥28/m</span>
+                            <span>加入购物车</span>
+                        </router-link>
+                    </div>
+                </li>
+                <li>
+                    <div class="part_one">
+                        <router-link to="/">
+                            <Tooltip content="点击查看大图" placement="top">
+                                <img src="../assets/imgs/2.jpeg" alt="" @click="toBrowse">
+                            </Tooltip>
+                            <p>绝代风华</p>
+                            <span>￥28/m</span>
+                            <span>加入购物车</span>
+                        </router-link>
+                    </div>
+                </li>
+                <li>
+                    <div class="part_one">
+                        <router-link to="/">
+                            <Tooltip content="点击查看大图" placement="top">
+                                <img src="../assets/imgs/2.jpeg" alt="" @click="toBrowse">
+                            </Tooltip>
+                            <p>绝代风华</p>
+                            <span>￥28/m</span>
+                            <span>加入购物车</span>
+                        </router-link>
+                    </div>
+                </li>
+                <li>
+                    <div class="part_one">
+                        <router-link to="/">
+                            <Tooltip content="点击查看大图" placement="top">
+                                <img src="../assets/imgs/2.jpeg" alt="" @click="toBrowse">
+                            </Tooltip>
+                            <p>绝代风华</p>
+                            <span>￥28/m</span>
+                            <span>加入购物车</span>
+                        </router-link>
+                    </div>
+                </li>
+                <li>
+                    <div class="part_one">
+                        <router-link to="/">
+                            <Tooltip content="点击查看大图" placement="top">
+                                <img src="../assets/imgs/2.jpeg" alt="" @click="toBrowse">
+                            </Tooltip>
+                            <p>绝代风华</p>
+                            <span>￥28/m</span>
+                            <span>加入购物车</span>
+                        </router-link>
+                    </div>
+                </li>
+                <li>
+                    <div class="part_one">
+                        <router-link to="/">
+                            <Tooltip content="点击查看大图" placement="top">
+                                <img src="../assets/imgs/2.jpeg" alt="" @click="toBrowse">
+                            </Tooltip>
+                            <p>绝代风华</p>
+                            <span>￥28/m</span>
+                            <span>加入购物车</span>
+                        </router-link>
+                    </div>
+                </li>
+                <li>
+                    <div class="part_one">
+                        <router-link to="/">
+                            <Tooltip content="点击查看大图" placement="top">
+                                <img src="../assets/imgs/2.jpeg" alt="" @click="toBrowse">
+                            </Tooltip>
+                            <p>绝代风华</p>
+                            <span>￥28/m</span>
+                            <span>加入购物车</span>
+                        </router-link>
+                    </div>
+                </li>
+                <li>
+                    <div class="part_one">
+                        <router-link to="/">
+                            <Tooltip content="点击查看大图" placement="top">
+                                <img src="../assets/imgs/2.jpeg" alt="" @click="toBrowse">
+                            </Tooltip>
+                            <p>绝代风华</p>
+                            <span>￥28/m</span>
+                            <span>加入购物车</span>
+                        </router-link>
+                    </div>
+                </li>
+                <li>
+                    <div class="part_one">
+                        <router-link to="/">
+                            <Tooltip content="点击查看大图" placement="top">
+                                <img src="../assets/imgs/2.jpeg" alt="" @click="toBrowse">
+                            </Tooltip>
+                            <p>绝代风华</p>
+                            <span>￥28/m</span>
+                            <span>加入购物车</span>
+                        </router-link>
+                    </div>
+                </li>
+            </ul>
         </div>
-        <ul>
-            <li>
-                <div class="part_one">
-                    <router-link to="/">
-                        <Tooltip content="点击查看大图" placement="top">
-                            <img src="../assets/imgs/1.png" alt="" @click="toBrowse">
-                        </Tooltip>
 
-                        <p>绝代风华</p>
-                        <span>￥28/m</span>
-                        <span>加入购物车</span>
-                    </router-link>
-                </div>
-            </li>
-            <li>
-                <div class="part_one">
-                    <router-link to="/">
-                        <Tooltip content="点击查看大图" placement="top">
-                            <img src="../assets/imgs/2.jpeg" alt="" @click="toBrowse">
-                        </Tooltip>
-                        <p>绝代风华</p>
-                        <span>￥28/m</span>
-                        <span>加入购物车</span>
-                    </router-link>
-                </div>
-            </li>
-            <li>
-                <div class="part_one">
-                    <router-link to="/">
-                        <Tooltip content="点击查看大图" placement="top">
-                            <img src="../assets/imgs/2.jpeg" alt="" @click="toBrowse">
-                        </Tooltip>
-                        <p>绝代风华</p>
-                        <span>￥28/m</span>
-                        <span>加入购物车</span>
-                    </router-link>
-                </div>
-            </li>
-            <li>
-                <div class="part_one">
-                    <router-link to="/">
-                        <Tooltip content="点击查看大图" placement="top">
-                            <img src="../assets/imgs/2.jpeg" alt="" @click="toBrowse">
-                        </Tooltip>
-                        <p>绝代风华</p>
-                        <span>￥28/m</span>
-                        <span>加入购物车</span>
-                    </router-link>
-                </div>
-            </li>
-            <li>
-                <div class="part_one">
-                    <router-link to="/">
-                        <Tooltip content="点击查看大图" placement="top">
-                            <img src="../assets/imgs/2.jpeg" alt="" @click="toBrowse">
-                        </Tooltip>
-                        <p>绝代风华</p>
-                        <span>￥28/m</span>
-                        <span>加入购物车</span>
-                    </router-link>
-                </div>
-            </li>
-            <li>
-                <div class="part_one">
-                    <router-link to="/">
-                        <Tooltip content="点击查看大图" placement="top">
-                            <img src="../assets/imgs/2.jpeg" alt="" @click="toBrowse">
-                        </Tooltip>
-                        <p>绝代风华</p>
-                        <span>￥28/m</span>
-                        <span>加入购物车</span>
-                    </router-link>
-                </div>
-            </li>
-            <li>
-                <div class="part_one">
-                    <router-link to="/">
-                        <Tooltip content="点击查看大图" placement="top">
-                            <img src="../assets/imgs/2.jpeg" alt="" @click="toBrowse">
-                        </Tooltip>
-                        <p>绝代风华</p>
-                        <span>￥28/m</span>
-                        <span>加入购物车</span>
-                    </router-link>
-                </div>
-            </li>
-            <li>
-                <div class="part_one">
-                    <router-link to="/">
-                        <Tooltip content="点击查看大图" placement="top">
-                            <img src="../assets/imgs/2.jpeg" alt="" @click="toBrowse">
-                        </Tooltip>
-                        <p>绝代风华</p>
-                        <span>￥28/m</span>
-                        <span>加入购物车</span>
-                    </router-link>
-                </div>
-            </li>
-            <li>
-                <div class="part_one">
-                    <router-link to="/">
-                        <Tooltip content="点击查看大图" placement="top">
-                            <img src="../assets/imgs/2.jpeg" alt="" @click="toBrowse">
-                        </Tooltip>
-                        <p>绝代风华</p>
-                        <span>￥28/m</span>
-                        <span>加入购物车</span>
-                    </router-link>
-                </div>
-            </li>
-            <li>
-                <div class="part_one">
-                    <router-link to="/">
-                        <Tooltip content="点击查看大图" placement="top">
-                            <img src="../assets/imgs/2.jpeg" alt="" @click="toBrowse">
-                        </Tooltip>
-                        <p>绝代风华</p>
-                        <span>￥28/m</span>
-                        <span>加入购物车</span>
-                    </router-link>
-                </div>
-            </li>
-            <li>
-                <div class="part_one">
-                    <router-link to="/">
-                        <Tooltip content="点击查看大图" placement="top">
-                            <img src="../assets/imgs/2.jpeg" alt="" @click="toBrowse">
-                        </Tooltip>
-                        <p>绝代风华</p>
-                        <span>￥28/m</span>
-                        <span>加入购物车</span>
-                    </router-link>
-                </div>
-            </li>
-            <li>
-                <div class="part_one">
-                    <router-link to="/">
-                        <Tooltip content="点击查看大图" placement="top">
-                            <img src="../assets/imgs/2.jpeg" alt="" @click="toBrowse">
-                        </Tooltip>
-                        <p>绝代风华</p>
-                        <span>￥28/m</span>
-                        <span>加入购物车</span>
-                    </router-link>
-                </div>
-            </li>
-            <li>
-                <div class="part_one">
-                    <router-link to="/">
-                        <Tooltip content="点击查看大图" placement="top">
-                            <img src="../assets/imgs/2.jpeg" alt="" @click="toBrowse">
-                        </Tooltip>
-                        <p>绝代风华</p>
-                        <span>￥28/m</span>
-                        <span>加入购物车</span>
-                    </router-link>
-                </div>
-            </li>
-            <li>
-                <div class="part_one">
-                    <router-link to="/">
-                        <Tooltip content="点击查看大图" placement="top">
-                            <img src="../assets/imgs/2.jpeg" alt="" @click="toBrowse">
-                        </Tooltip>
-                        <p>绝代风华</p>
-                        <span>￥28/m</span>
-                        <span>加入购物车</span>
-                    </router-link>
-                </div>
-            </li>
-            <li>
-                <div class="part_one">
-                    <router-link to="/">
-                        <Tooltip content="点击查看大图" placement="top">
-                            <img src="../assets/imgs/2.jpeg" alt="" @click="toBrowse">
-                        </Tooltip>
-                        <p>绝代风华</p>
-                        <span>￥28/m</span>
-                        <span>加入购物车</span>
-                    </router-link>
-                </div>
-            </li>
-            <li>
-                <div class="part_one">
-                    <router-link to="/">
-                        <Tooltip content="点击查看大图" placement="top">
-                            <img src="../assets/imgs/2.jpeg" alt="" @click="toBrowse">
-                        </Tooltip>
-                        <p>绝代风华</p>
-                        <span>￥28/m</span>
-                        <span>加入购物车</span>
-                    </router-link>
-                </div>
-            </li>
-            <li>
-                <div class="part_one">
-                    <router-link to="/">
-                        <Tooltip content="点击查看大图" placement="top">
-                            <img src="../assets/imgs/2.jpeg" alt="" @click="toBrowse">
-                        </Tooltip>
-                        <p>绝代风华</p>
-                        <span>￥28/m</span>
-                        <span>加入购物车</span>
-                    </router-link>
-                </div>
-            </li>
-            <li>
-                <div class="part_one">
-                    <router-link to="/">
-                        <Tooltip content="点击查看大图" placement="top">
-                            <img src="../assets/imgs/2.jpeg" alt="" @click="toBrowse">
-                        </Tooltip>
-                        <p>绝代风华</p>
-                        <span>￥28/m</span>
-                        <span>加入购物车</span>
-                    </router-link>
-                </div>
-            </li>
-            <li>
-                <div class="part_one">
-                    <router-link to="/">
-                        <Tooltip content="点击查看大图" placement="top">
-                            <img src="../assets/imgs/2.jpeg" alt="" @click="toBrowse">
-                        </Tooltip>
-                        <p>绝代风华</p>
-                        <span>￥28/m</span>
-                        <span>加入购物车</span>
-                    </router-link>
-                </div>
-            </li>
-            <li>
-                <div class="part_one">
-                    <router-link to="/">
-                        <Tooltip content="点击查看大图" placement="top">
-                            <img src="../assets/imgs/2.jpeg" alt="" @click="toBrowse">
-                        </Tooltip>
-                        <p>绝代风华</p>
-                        <span>￥28/m</span>
-                        <span>加入购物车</span>
-                    </router-link>
-                </div>
-            </li>
-        </ul>
     </div>
 </template>
 
@@ -290,6 +292,8 @@
 <style lang="less" scoped>
     #mainpart{
         overflow: scroll;
+        margin-left:5.0rem;
+        position:relative;
         .cover_out{
             position:fixed;
             display: flex;
@@ -311,57 +315,66 @@
                 }
             }
         }
-        .cover{
-            margin-left: 5.1rem;
-            height:5rem;
-            display:flex;
-            overflow: hidden;
-            @media (max-width:750px){
-                height:2rem;
-            }
-            img{
-                height: 100%;
-                &:nth-child(1){
-                    flex:2;
+        .wrap{
+            position:absolute;
+            top:0;
+            padding:.1rem .5rem;
+            .cover{
+                height:5rem;
+                display:flex;
+                margin:.3rem .1rem;
+                overflow: hidden;
+                border-radius:5px;
+                @media (max-width:750px){
+                    height:2rem;
                 }
-                &:nth-child(2){
-                    flex:5;
-                    margin-left: .3rem;
-                }
-            }
-        }
-        ul{
-            display: flex;
-            margin-left: 5rem;
-            flex-wrap:wrap;
-            li{
-                .part_one{
-                    width:5.5rem;
-                    margin:.1rem;
-                    padding:.1rem;
-                    border:1px solid #ccc;
-                    border-radius:4px;
-                    box-shadow:0 2px 2px #ccc;
-                    &:hover{
-                        transform: scale(1.2);
+                img{
+                    height: 100%;
+                    border-radius:5px;
+                    cursor:pointer;
+                    &:nth-child(1){
+                        flex:2;
                     }
-                    a{
-                        img{
-                            width:4rem;
-                            height:4rem;
-                        }
-                        p{
-                            font-size:.4rem;
-                        }
-                        span{
-                            display: block;
-                            font-size:.4rem;
-                            height:.8rem;
-                            margin:.1rem;
-                        }
+                    &:nth-child(2){
+                        flex:5;
+                        margin-left: .3rem;
                     }
                 }
             }
+            ul{
+                display: flex;
+                flex-wrap:wrap;
+                li{
+                    .part_one{
+                        width:5.5rem;
+                        margin:.1rem;
+                        padding:.1rem;
+                        border:1px solid #ccc;
+                        border-radius:4px;
+                        box-shadow:0 2px 2px #ccc;
+                        &:hover{
+                            transform: scale(1.2);
+                            opacity:.8;
+                        }
+                        a{
+                            img{
+                                width:4rem;
+                                height:4rem;
+                            }
+                            p{
+                                font-size:.4rem;
+                            }
+                            span{
+                                display: block;
+                                font-size:.4rem;
+                                height:.8rem;
+                                margin:.1rem;
+                            }
+                        }
+                    }
+                }
+            }
         }
+
     }
 </style>

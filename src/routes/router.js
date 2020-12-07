@@ -7,6 +7,8 @@ import pagekingdom from '../views/Pagekingdom'
 import pagemountain from '../views/Pagemountain'
 import pagespring from '../views/Pagespring'
 import pagewillow from '../views/Pagewillow'
+import login from '../views/Login'
+import register from '../views/Reg'
 Vue.use(VueRouter)
 let router = new VueRouter({
     routes:[
@@ -37,6 +39,14 @@ let router = new VueRouter({
         {
             path:'/willow',
             component:pagewillow
+        },
+        {
+            path:'/reg',
+            component:register
+        },
+        {
+            path:'/login',
+            component:login
         }
 
     ]

@@ -4,9 +4,12 @@ import './assets/fonts/iconfont.css'
 import iView from 'iview'
 import 'iview/dist/styles/iview.css'
 
+import axios from 'axios'
 import store from './store/store'
 import router from './routes/router'
-
+import qs from 'qs'
+Vue.prototype.$http = axios
+Vue.prototype.$qs = qs
 Vue.config.productionTip = false
 // 全局配置iview的一些属性
 Vue.use(iView,{

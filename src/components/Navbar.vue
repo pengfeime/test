@@ -10,8 +10,8 @@
                 <li><router-link to="/">个人中心</router-link></li>
             </ul>
             <ul class="login">
-                <li>登录</li>
-                <li>注册</li>
+                <li><router-link to="/login">登录</router-link></li>
+                <li><router-link to="/reg">注册</router-link></li>
             </ul>
         </div>
 

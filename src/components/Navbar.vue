@@ -4,7 +4,7 @@
         <div ref="nav" :style="{height:this.$store.getters.getScroll?'2rem':'1.5rem',opacity:this.$store.getters.getScroll?'.8':'1'}">
             <ul class="nav">
                 <li><router-link to="/">首&nbsp;页</router-link></li>
-                <li><router-link to="/">新闻中心</router-link></li>
+                <li><router-link to="/news">新闻中心</router-link></li>
                 <li><router-link to="/">操作说明</router-link></li>
                 <li><router-link to="/">购物车</router-link></li>
                 <li><router-link to="/">个人中心</router-link></li>

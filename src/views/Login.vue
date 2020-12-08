@@ -1,6 +1,7 @@
 <template>
     <div id="login">
         <div class="main_zone">
+            <div class="close" @click="this.toHome">x</div>
             <p class="title">弘扬刺绣文化</p>
             <div class="avatar">
                 <router-link to="/">
@@ -10,18 +11,52 @@
             <p>new bee</p>
             <div class="login">
                 <div class="tab">
-                    <div>密码登录</div>
-                    <div>短信登录</div>
+                    <div @click="loginOnPsw=true" :class="{hasborder:loginOnPsw}">密码登录</div>
+                    <div @click="loginOnPsw=false" :class="{hasborder: !loginOnPsw}">短信登录</div>
                 </div>
-                <div>
-                    <input type="text" name="nickname" placeholder="账号"/>
-                    <router-link to="/">忘记登录用户名</router-link>
-                </div>
-                <div>
-                    <input type="text" name="password" placeholder="密码">
-                    <router-link to="/">忘记登录密码</router-link>
+                <!--                密码登录模块-->
+                <div :class="{off:!loginOnPsw}">
+                    <div>
+                        <input type="text" name="nickname" placeholder="账号" class="user"/>
+                        <router-link to="/">忘记登录用户名</router-link>
+                    </div>
+                    <div>
+                        <input type="text" name="password" placeholder="密码" class="user">
+                        <router-link to="/">忘记登录密码</router-link>
+                    </div>
+                    <div class="remember">
+                        <label for="check" @click="() => {
+                    // 点击label会触发冒泡事件，同时点击label也相当于点击了input，所以会触发俩次
+                            return false
+                        }">
+                            <input type="checkbox" @click="checkStatus" ref="checkBox" id="check">
+                            <span class=" fakebox"></span>
+                            <span>记住我</span>
+                        </label>
+                    </div>
                 </div>
 
+                <!--手机号登录-->
+                <div :class="{off:loginOnPsw}" class="phone_zone">
+                    <div>
+                        <input type="text" name="nickname" placeholder="请输入手机号" class="user"/>
+                        <router-link to="/">手机号</router-link>
+                    </div>
+                    <div class="phone">
+                        <input type="text" name="password" placeholder="请输入6位数验证码" class="user">
+                        <button>获取验证码</button>
+                    </div>
+                    <div class="remember">
+                        <label for="check_two" @click="() => {
+                    // 点击label会触发冒泡事件，同时点击label也相当于点击了input，所以会触发俩次
+                            return false
+                        }">
+                            <input type="checkbox" @click="checkStatus" ref="checkBox" id="check_two">
+                            <span class=" fakebox"></span>
+                            <span class='rem_two' :style="{color:isCheck?'green':'grey'}">记住我</span>
+                        </label>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -29,82 +64,194 @@
 
 <script>
     export default {
-        name: "login"
+        name: "login",
+        data() {
+            return {
+                loginOnPsw: true, // 默认密码登录
+                isCheck:false
+            }
+        },
+        methods: {
+            checkStatus() {
+                if (this.$refs.checkBox.checked) {
+                    this.isCheck = true
+                    this.$refs.checkBox.nextSibling.style.cssText = 'background:transparent;opacity:1'
+                } else {
+                    this.isCheck = false
+                    this.$refs.checkBox.nextSibling.style = 'background :lightgray'
+                }
+            },
+            toHome(){
+                this.$router.push('/')
+            }
+        }
     }
 </script>
 
 <style lang="less" scoped>
-    #login{
-        position:fixed;
-        top:0;
-        left:0;
-        width:100%;
-        height:100%;
+    #login {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
         background: #e0e4e8;
-        z-index:101;
-        .main_zone{
-            position:absolute;
-            width:15rem;
-            height:18rem;
-            top:0;
-            left:0;
-            right:0;
+        z-index: 101;
+
+        .off {
+            display: none;
+        }
+
+        .main_zone {
+            position: absolute;
+            width: 15rem;
+            height: 18rem;
+            top: 0;
+            left: 0;
+            right: 0;
             bottom: 0;
-            margin:auto;
+            margin: auto;
             background: #ffffff;
-            .title{
-                text-align:center;
-                color:#393b3d;
-                font-size:.8rem;
-                margin:1rem;
+            box-shadow: 2px 2px 5px 3px #ccc;
+            .close{
+                position: absolute;
+                width:1rem;
+                height:1rem;
+                line-height: 1rem;
+                top:0;
+                right:0;
+                text-align: center;
+                color:#6a6b6c;
+                cursor:pointer;
             }
-            .avatar{
-                a{
-                    img{
+            .title {
+                text-align: center;
+                color: #393b3d;
+                font-size: .8rem;
+                margin: 1rem;
+            }
+
+            .avatar {
+                a {
+                    img {
                         display: block;
-                        width:3rem;
-                        height:3rem;
-                        margin:0 auto;
+                        width: 3rem;
+                        height: 3rem;
+                        margin: 0 auto;
                         background: url("../assets/imgs/6.jpg") center/cover no-repeat;
-                        border-radius:50%;
+                        border-radius: 50%;
                     }
                 }
             }
-            .avatar+p{
-                color:red;
-                font-size:.6rem;
+
+            .avatar + p {
+                color: red;
+                font-size: .6rem;
             }
-            .login{
-                .tab{
-                    width:100%;
-                    height:2rem;
+
+            .login {
+                .tab {
+                    width: 100%;
+                    height: 2rem;
                     display: flex;
                     align-items: center;
                     justify-content: space-around;
-                    padding:.5rem 1rem;
-                    div{
-                        flex:1;
-                        margin:.1rem;
-                        font-size:.6rem;
+                    padding: .5rem 1rem;
+                    cursor:pointer;
+                    div {
+                        flex: 1;
+                        margin: .1rem;
+                        padding:.2rem;
+                        font-size: .6rem;
+                        border-bottom: 2px solid transparent;
+                    }
+
+                    .hasborder {
                         border-bottom: 2px solid #67affd;
                     }
                 }
-                div{
-                    input{
-                        display: block;
-                        font-size:.6rem;
-                        width:~"calc(100% - 2rem)";
-                        margin:.2rem auto;
-                        text-indent: .5rem;
+
+                div {
+                    div {
+                        .user {
+                            display: block;
+                            height:1.5rem;
+                            font-size: .6rem;
+                            width: ~"calc(100% - 2rem)";
+                            margin: .2rem auto;
+                            text-indent: .5rem;
+                        }
+
+                        a {
+                            display: block;
+                            width: ~"calc(100% - 1rem)";
+                            text-align: right;
+                            font-size: .5rem;
+                        }
                     }
-                    a{
-                        display: block;
-                        width:~"calc(100% - 1rem)";
-                        text-align:right;
-                        font-size:.5rem;
+
+                    .remember {
+                        width: 5rem;
+                        margin-left: 1rem;
+
+                        label {
+                            display: flex;
+                            position: relative;
+                            align-items: center;
+                            font-size: .5rem;
+
+                            input {
+                                vertical-align: top; // 解決input和span标签高度不齐问题
+                                width: .8rem;
+                                height: .8rem;
+                                outline: none;
+                                color: red;
+                                /*input设置type为checkbox之后设置背景色失效*/
+                                //-webkit-appearance: none;
+                            }
+
+                            .fakebox {
+                                position: absolute;
+                                width: .8rem;
+                                height: .8rem;
+                                background: lightgray;
+                                border-radius: 2px;
+                                vertical-align: top;
+                                opacity: .5;
+                            }
+
+                            .fakebox + span {
+                                display: inline-block;
+                                margin-left: .3rem;
+                                vertical-align: top;
+                            }
+
+
+                        }
                     }
                 }
-
+                .phone_zone{
+                    .phone{
+                        width:~"calc(100% - 2rem)";
+                        display:flex;
+                        align-items: center;
+                        height:2rem;
+                        margin:auto;
+                        input{
+                            flex:1;
+                            height:1.5rem;
+                        }
+                        button{
+                            display: inline-block;
+                            width:4rem;
+                            height:1.5rem;
+                            font-size:.5rem;
+                        }
+                    }
+                    .remember{
+                        margin-top:1rem;
+                    }
+                }
             }
         }
     }

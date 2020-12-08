@@ -9,6 +9,13 @@ import pagespring from '../views/Pagespring'
 import pagewillow from '../views/Pagewillow'
 import login from '../views/Login'
 import register from '../views/Reg'
+import newspage from '../views/Newspage'
+import companyabout from '../views/CompanyAbout'
+import companynew from '../views/CompanyNew'
+import honor from '../views/Honors'
+import teamintro from '../views/TeamIntro'
+import productabout from '../views/ProductAbout'
+import tradenew from '../views/TradeNew'
 Vue.use(VueRouter)
 let router = new VueRouter({
     routes:[
@@ -47,8 +54,38 @@ let router = new VueRouter({
         {
             path:'/login',
             component:login
-        }
+        },
+        {
+            path:'/news',
+            component:newspage,
+            children:[
+                {
+                    path:'companyabout',
+                    component:companyabout
+                },
+                {
+                    path:'companynew',
+                    component: companynew
+                },
+                {
+                    path:'honor',
+                    component:honor
+                },
+                {
+                    path:'products',
+                    component:productabout
+                },
+                {
+                    path:'teamintro',
+                    component:teamintro
+                },
+                {
+                    path:'tradenew',
+                    component:tradenew
+                }
 
+            ]
+        },
     ]
 })
 export default router

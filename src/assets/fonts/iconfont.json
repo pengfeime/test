@@ -6,6 +6,13 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "318421",
+      "name": "check-square",
+      "font_class": "checksquare",
+      "unicode": "e645",
+      "unicode_decimal": 58949
+    },
+    {
       "icon_id": "90512",
       "name": "o2o双平台",
       "font_class": "o2oshuangpingtai",

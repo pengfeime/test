@@ -2,7 +2,6 @@
     <div id="app">
         <navbar ref="navbar"></navbar>
         <div class="content">
-          <side class="aside"></side>
           <router-view class="main"></router-view>
         </div>
         <foot></foot>
@@ -11,11 +10,17 @@
 
 <script>
     import navbar from './Navbar'
-    import side from './Aside'
+
     import foot from './Footer'
     export default {
         name: 'App',
-        components: {navbar,side,foot}
+        components: {navbar,foot},
+        watch:{
+            "$route":function () {
+                let that = this
+                console.log('当前路由',that.$route.name)
+            }
+        }
     }
 </script>
 
@@ -26,6 +31,8 @@
         -moz-osx-font-smoothing: grayscale;
         text-align: center;
         height:100%;
+        padding:0;
+        margin:0;
         li{
             list-style:none;
         }
@@ -38,10 +45,6 @@
             display:flex;
             height:~"calc(100vh - 10rem)";
             overflow:scroll;
-            .aside{
-                display:inline-block;
-                width:4rem;
-            }
             .main{
                 flex:1;
             }

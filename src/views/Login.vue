@@ -17,11 +17,11 @@
                 <!--                密码登录模块-->
                 <div :class="{off:!loginOnPsw}">
                     <div>
-                        <input type="text" name="nickname" placeholder="账号" class="user"/>
+                        <input type="text" name="nickname" placeholder="账号" class="user" ref="nickname"/>
                         <router-link to="/">忘记登录用户名</router-link>
                     </div>
                     <div>
-                        <input type="text" name="password" placeholder="密码" class="user">
+                        <input type="text" name="password" placeholder="密码" class="user" ref="password">
                         <router-link to="/">忘记登录密码</router-link>
                     </div>
                     <div class="remember">
@@ -57,6 +57,12 @@
                         </label>
                     </div>
                 </div>
+                <Button class="submit" type="primary" @click="login">登录</Button>
+            </div>
+<!--            注册-->
+            <div class="reg">
+                <span>没有账号,</span>
+                <span><router-link :to="{name:'reg'}">立即注册</router-link></span>
             </div>
         </div>
     </div>
@@ -68,7 +74,11 @@
         data() {
             return {
                 loginOnPsw: true, // 默认密码登录
-                isCheck:false
+                isCheck:false,
+                loginInfo:{
+                    nickname:'',
+                    password:''
+                }
             }
         },
         methods: {
@@ -83,6 +93,23 @@
             },
             toHome(){
                 this.$router.push('/')
+            },
+            login(){
+                const nickname = this.$refs.nickname.value,
+                      password = this.$refs.password.value
+                this.loginInfo = {nickname,password}
+                console.log(this.loginInfo)
+                this.$http.post('http://127.0.0.1:3000/login',this.$qs.stringify(this.loginInfo),{headers: {
+                        // axios默认把数据以json的格式发送给后端，这与后端要求的‘content-Type’不符,需要手动修改
+                        // 改写头部导致后端接收数据格式错误，需要使用qs模块将数据以a=xxx&b=xx
+                        'Content-Type': 'application/x-www-form-urlencoded'
+                    }})
+                    .then((res) => {
+                        console.log('res',res)
+                    })
+                    .catch((err) => {
+                        console.log('err',err)
+                    })
             }
         }
     }
@@ -105,7 +132,7 @@
         .main_zone {
             position: absolute;
             width: 15rem;
-            height: 18rem;
+            height: 20rem;
             top: 0;
             left: 0;
             right: 0;
@@ -243,7 +270,7 @@
                         }
                         button{
                             display: inline-block;
-                            width:4rem;
+                            width:4.5rem;
                             height:1.5rem;
                             font-size:.5rem;
                         }
@@ -251,6 +278,23 @@
                     .remember{
                         margin-top:1rem;
                     }
+                }
+                .submit{
+                    width: 4rem;
+                    padding:.1rem .4rem;
+                }
+            }
+            .reg{
+                height:1rem;
+                margin-left: 1rem;
+                font-size:.6rem;
+                text-align:left;
+                span:nth-child(2){
+                    padding-left:.2rem;
+                    a{
+                        color:darkgreen;
+                    }
+
                 }
             }
         }

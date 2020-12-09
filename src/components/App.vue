@@ -2,7 +2,7 @@
     <div id="app">
         <navbar ref="navbar"></navbar>
         <div class="content">
-          <router-view class="main"></router-view>
+          <router-view :class="{main:this.$route.path == '/'}" ></router-view>
         </div>
         <foot></foot>
     </div>
@@ -15,11 +15,8 @@
     export default {
         name: 'App',
         components: {navbar,foot},
-        watch:{
-            "$route":function () {
-                let that = this
-                console.log('当前路由',that.$route.name)
-            }
+        mounted() {
+            console.log(this.$route.path)
         }
     }
 </script>

@@ -8,7 +8,7 @@ import pagemountain from '../views/Pagemountain'
 import pagespring from '../views/Pagespring'
 import pagewillow from '../views/Pagewillow'
 import login from '../views/Login'
-import register from '../views/Reg'
+import reg from '../views/Reg'
 import newspage from '../views/Newspage'
 import companyabout from '../views/CompanyAbout'
 import companynew from '../views/CompanyNew'
@@ -49,7 +49,8 @@ let router = new VueRouter({
         },
         {
             path:'/reg',
-            component:register
+            name:'reg',
+            component:reg
         },
         {
             path:'/login',

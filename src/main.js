@@ -8,9 +8,16 @@ import axios from 'axios'
 import store from './store/store'
 import router from './routes/router'
 import qs from 'qs'
+import directives from './directives/direcitves'
 Vue.prototype.$http = axios
 Vue.prototype.$qs = qs
 Vue.config.productionTip = false
+
+// 注册input的全局自定义指令
+directives.forEach((item) => {
+  console.log(item)
+  Vue.directive(item.name,item.bind_evt)
+})
 // 全局配置iview的一些属性
 Vue.use(iView,{
   transfer:true,  // 将浮层放置在body内

@@ -5,10 +5,13 @@
   "scripts": {
     "dev": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "start_node": "nodemon ./src/server/app.js",
+    "all": "concurrently \"npm run dev\" \"npm run start_node\""
   },
   "dependencies": {
     "axios": "^0.21.0",
+    "concurrently": "^5.3.0",
     "core-js": "^3.6.5",
     "iview": "^3.5.4",
     "jsonwebtoken": "^8.5.1",

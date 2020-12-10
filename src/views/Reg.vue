@@ -7,23 +7,43 @@
                 <form action="">
                     <div class="form_row">
                         <label for="mail">邮箱</label>
-                        <input type="text" placeholder="请输入邮箱号" id="mail" v-model="fillData.mail">
+                        <div class="input_zone">
+                            <input type="text" placeholder="请输入邮箱号" id="mail" ref="r_mail" v-model="fillData.mail" v-limit-mail data-mail_statu="" data-tip="" @blur="iptBlur('mail')">
+                            <div :class="{green:this.mail_statu}">{{this.mail_tip}}</div>
+                        </div>
+
                     </div>
                     <div class="form_row">
                         <label for="tel">手机号码</label>
-                        <input type="text" placeholder="请输入手机号" id="tel" v-model="fillData.tel_num">
+                        <div class="input_zone">
+                            <input type="text" placeholder="请输入手机号" id="tel" ref="r_tel" v-model="fillData.tel_num" v-limit-tel data-tel_statu="" data-tip=""  @blur="iptBlur('tel')">
+                            <div :class="{green:this.tel_statu}">{{this.tel_tip}}</div>
+                        </div>
+
                     </div>
                     <div class="form_row">
                         <label for="nick">用户名</label>
-                        <input type="text" placeholder="请输入昵称" id="nick" v-model="fillData.nickname">
+                        <div class="input_zone">
+                            <input type="text" placeholder="请输入昵称" id="nick" ref="r_nick" v-model="fillData.nickname" v-limit-nick data-nick_statu="" data-tip="" @blur="iptBlur('nick')">
+                            <div :class="{green:this.nick_statu}">{{this.nick_tip}}</div>
+                        </div>
+
                     </div>
                     <div class="form_row">
                         <label for="psw">设置密码</label>
-                        <input type="password" placeholder="请设置密码" id="psw" v-model="fillData.password">
+                        <div class="input_zone">
+                            <input type="password" placeholder="请设置密码" id="psw" ref="r_psw" v-model="fillData.password" v-limit-psw data-psw_statu="" data-tip="" @blur="iptBlur('psw')">
+                            <div :class="{green:this.psw_statu}">{{this.psw_tip}}</div>
+                        </div>
+
                     </div>
                     <div class="form_row">
                         <label for="re_psw">再次输入</label>
-                        <input type="password" placeholder="请重新输入密码" id="re_psw">
+                        <div class="input_zone">
+                            <input type="password" placeholder="请重新输入密码" id="re_psw" ref="r_rpsw" @blur="iptBlur('rePsw')">
+                            <div :class="{green:this.rePsw_statu}">{{this.rePsw_tip}}</div>
+                        </div>
+
                     </div>
                 </form>
             </div>
@@ -45,7 +65,17 @@
                   tel_num:'',
                   nickname:'',
                   password:''
-              }
+              },
+              nick_tip:'',
+              nick_statu:'',
+              tel_tip:'',
+              tel_statu:'',
+              psw_tip:'',
+              psw_statu:'',
+              mail_tip:'',
+              mail_statu:'',
+              rePsw_tip:'',
+              rePsw_statu:''
           }
         },
         methods:{
@@ -53,12 +83,6 @@
 
                 // 注意data里的fillData是__ob__:Observer是不可枚举的
                 let fillData = JSON.parse(JSON.stringify(this.fillData))
-                let formData = new FormData() // post需要formdata格式
-                console.log(fillData)
-                for(let key in fillData){
-                    formData.append(key,fillData[key])
-                    console.log(formData)
-                }
                 // 提交注册
                 this.$http.post('http://127.0.0.1:3000/reg',
                     this.$qs.stringify(fillData)
@@ -70,6 +94,38 @@
                         console.log(err)
                     })
 
+            },
+            iptBlur(type){
+                setTimeout(() => {
+                    // 由于nickBlur事件会优于detective自定义事件触发导致获取到的dataset不是最新，所以这里要把获取属性延迟
+                    switch (type){
+                        case 'nick':
+                            this.nick_tip = this.$refs.r_nick.dataset.tip
+                            this.nick_statu = this.$refs.r_nick.dataset.nick_statu
+                            break
+                        case 'tel':
+                            this.tel_tip = this.$refs.r_tel.dataset.tip
+                            this.tel_statu = this.$refs.r_tel.dataset.tel_statu
+                            break
+                        case 'mail':
+                            this.mail_tip = this.$refs.r_mail.dataset.tip
+                            this.mail_statu = this.$refs.r_mail.dataset.mail_statu
+                            break
+                        case 'psw':
+                            this.psw_tip = this.$refs.r_psw.dataset.tip
+                            this.psw_statu = this.$refs.r_psw.dataset.psw_statu
+                            break
+                        case 'rePsw':
+                            if(this.$refs.r_rpsw.value === this.$refs.r_psw.value){
+                                this.rePsw_statu = true
+                                this.rePsw_tip = '输入正确'
+                            }else{
+                                this.rePsw_statu = ''
+                                this.rePsw_tip = '密码输入不一致'
+                            }
+                            break
+                    }
+                },0)
             }
         }
     }
@@ -83,10 +139,6 @@
             margin-left:5rem;
         }
         &>div{
-            width:80%;
-            @media (min-width:750px){
-                width:60%;
-            }
             p{
                 text-align: left;
             }
@@ -95,10 +147,16 @@
                     width: 100%;
                     .form_row{
                         display: flex;
-                        margin:1rem .2rem .3rem 0;
-                        align-items:center;
+                        height:2.5rem;
+                        width:100%;
+                        margin:.3rem .2rem .3rem 0;
+                        align-items:baseline;
                         text-align: left;
-                        font-size:.5rem;
+                        overflow: hidden;
+                        font-size:.8rem;
+                        &:nth-child(1){
+                            margin-top:1rem;
+                        }
                         label{
                             display: inline-block;
                             width:4rem;
@@ -131,18 +189,43 @@
                                 letter-spacing: .1rem;
                             }
                         }
-
-                        input{
+                        .input_zone{
                             flex: 1;
-                            outline:none;
-                            text-indent:.5rem;
-                            border-radius: 5px;
-                            border:1px solid #ccc; // 这是为消除边框内阴影
+                            width:~"calc(100% - 4rem)";
+                            input{
+                                width:80%;
+                                outline:none;
+                                text-indent:.5rem;
+                                border-radius: 5px;
+                                border:1px solid #ccc; // 这是为消除边框内阴影
+                                @media (min-width:750px){
+                                    width:60%;
+                                }
+                            }
+                            div{
+                                max-width:80%;
+                                overflow: hidden;
+                                text-overflow: ellipsis;
+                                @media (min-width:750px){
+                                    width:60%;
+                                }
+                                text-align: right;
+                                color: red;
+                                font-size:.5rem;
+                            }
+                            .green{
+                                color: green;
+                            }
                         }
+
                     }
                 }
             }
             .fill_ok{
+                width:~"calc((100% - 4rem)*.8 + 4rem)";
+                @media (min-width:750px){
+                    width:~"calc((100% - 4rem)*.6 + 4rem)";
+                }
                 margin:1rem .5rem;
                 font-size:.5rem;
                 button{

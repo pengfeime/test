@@ -10,7 +10,7 @@ let sqlMap = {
     // 创建新表
     handle_table:{
         // createTable:'create table ?(id int(5) auto_increment=1,nickname varchar(8) ,password varchar(12),phone int(11),mail,avatar mediumblob)', // 新建表
-        createTable:'create table account_list(nickname varchar(8),password varchar(12),tel_num int(11),mail varchar(20))'
+        createTable:'create table account_list(nickname varchar(8),password varchar(12),tel_num varchar(11),mail varchar(20))'
     }
 }
 module.exports = sqlMap

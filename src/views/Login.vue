@@ -15,13 +15,13 @@
                     <div @click="loginOnPsw=false" :class="{hasborder: !loginOnPsw}">短信登录</div>
                 </div>
                 <!--                密码登录模块-->
-                <div :class="{off:!loginOnPsw}">
+                <div :class="{off:!loginOnPsw}" id="login_pwd">
                     <div>
-                        <input type="text" name="nickname" placeholder="账号" class="user" ref="nickname"/>
+                        <input type="text" name="nickname" placeholder="账号" class="user" ref="nickname" v-auto-next-ipt="{id:'login_pwd'}"/>
                         <router-link to="/">忘记登录用户名</router-link>
                     </div>
                     <div>
-                        <input type="text" name="password" placeholder="密码" class="user" ref="password">
+                        <input type="text" name="password" placeholder="密码" class="user" ref="password" v-auto-next-ipt="{id:'login_pwd'}">
                         <router-link to="/">忘记登录密码</router-link>
                     </div>
                     <div class="remember">
@@ -37,13 +37,13 @@
                 </div>
 
                 <!--手机号登录-->
-                <div :class="{off:loginOnPsw}" class="phone_zone">
+                <div :class="{off:loginOnPsw}" class="phone_zone" id="login_tel">
                     <div>
-                        <input type="text" name="nickname" placeholder="请输入手机号" class="user"/>
+                        <input type="text" name="nickname" placeholder="请输入手机号" class="user" v-auto-next-ipt="{id:'login_tel'}"/>
                         <router-link to="/">手机号</router-link>
                     </div>
                     <div class="phone">
-                        <input type="text" name="password" placeholder="请输入6位数验证码" class="user">
+                        <input type="text" name="password" placeholder="请输入6位数验证码" class="user" v-auto-next-ipt="{id:'login_tel'}">
                         <button>获取验证码</button>
                     </div>
                     <div class="remember">
@@ -81,6 +81,9 @@
                 }
             }
         },
+        mounted(){
+            this.$refs.nickname.value = this.$route.query.nickname?this.$route.query.nickname:''
+        },
         methods: {
             checkStatus() {
                 if (this.$refs.checkBox.checked) {
@@ -98,14 +101,29 @@
                 const nickname = this.$refs.nickname.value,
                       password = this.$refs.password.value
                 this.loginInfo = {nickname,password}
-                console.log(this.loginInfo)
                 this.$http.post('http://127.0.0.1:3000/login',this.$qs.stringify(this.loginInfo),{headers: {
                         // axios默认把数据以json的格式发送给后端，这与后端要求的‘content-Type’不符,需要手动修改
                         // 改写头部导致后端接收数据格式错误，需要使用qs模块将数据以a=xxx&b=xx
                         'Content-Type': 'application/x-www-form-urlencoded'
                     }})
                     .then((res) => {
-                        console.log('res',res)
+                        const {Token} = res.data
+                        // 保存token
+                        localStorage.setItem('Token',Token)
+                        console.log(localStorage.getItem('Token'))
+                        // 再次请求服务器，把token发送给后台
+                        this.$http.get(`http://127.0.0.1:3000/checktoken?Token=${Token}`,{headers: {
+                                // axios默认把数据以json的格式发送给后端，这与后端要求的‘content-Type’不符,需要手动修改
+                                // 改写头部导致后端接收数据格式错误，需要使用qs模块将数据以a=xxx&b=xx
+                                'Content-Type': 'application/x-www-form-urlencoded'
+                            }},{withCredentials:true})
+                            .then((res) => {
+                                console.log(res)
+                                localStorage.setItem('TokenInvalid',res.data.TokenInvalid)
+                            })
+                            .catch((err) => {
+                                console.log(err)
+                            })
                     })
                     .catch((err) => {
                         console.log('err',err)
@@ -286,9 +304,8 @@
             }
             .reg{
                 height:1rem;
-                margin-left: 1rem;
                 font-size:.6rem;
-                text-align:left;
+                text-align:center;
                 span:nth-child(2){
                     padding-left:.2rem;
                     a{

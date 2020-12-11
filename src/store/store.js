@@ -4,11 +4,15 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
     state:{
-        isTop:true // 记录页面是否有发生滚动，ture表示未发生滚动
+        isTop:true, // 记录页面是否有发生滚动，ture表示未发生滚动
+        isLogin:window.localStorage.getItem('TokenInvalid')
     },
     getters:{
         getScroll(state) { // 获取isTop
             return state.isTop
+        },
+        getToken(state){
+            return state.isLogin
         }
     },
     mutations:{

@@ -8,7 +8,7 @@
                     <div class="form_row">
                         <label for="mail">邮箱</label>
                         <div class="input_zone">
-                            <input type="text" placeholder="请输入邮箱号" id="mail" ref="r_mail" v-model="fillData.mail" v-limit-mail data-mail_statu="" data-tip="" @blur="iptBlur('mail')">
+                            <input type="text" placeholder="请输入邮箱号" id="mail" ref="r_mail" v-model="fillData.mail"  v-auto-next-ipt="{id:'reg'}" v-limit-mail data-mail_statu="" data-tip="" @blur="iptBlur('mail')">
                             <div :class="{green:this.mail_statu}">{{this.mail_tip}}</div>
                         </div>
 
@@ -16,7 +16,7 @@
                     <div class="form_row">
                         <label for="tel">手机号码</label>
                         <div class="input_zone">
-                            <input type="text" placeholder="请输入手机号" id="tel" ref="r_tel" v-model="fillData.tel_num" v-limit-tel data-tel_statu="" data-tip=""  @blur="iptBlur('tel')">
+                            <input type="text" placeholder="请输入手机号" id="tel" ref="r_tel" v-model="fillData.tel_num" v-auto-next-ipt="{id:'reg'}" v-limit-tel data-tel_statu="" data-tip=""  @blur="iptBlur('tel')">
                             <div :class="{green:this.tel_statu}">{{this.tel_tip}}</div>
                         </div>
 
@@ -24,7 +24,7 @@
                     <div class="form_row">
                         <label for="nick">用户名</label>
                         <div class="input_zone">
-                            <input type="text" placeholder="请输入昵称" id="nick" ref="r_nick" v-model="fillData.nickname" v-limit-nick data-nick_statu="" data-tip="" @blur="iptBlur('nick')">
+                            <input type="text" placeholder="请输入昵称" id="nick" ref="r_nick" v-model="fillData.nickname" v-auto-next-ipt="{id:'reg'}" v-limit-nick data-nick_statu="" data-tip="" @blur="iptBlur('nick')">
                             <div :class="{green:this.nick_statu}">{{this.nick_tip}}</div>
                         </div>
 
@@ -32,7 +32,7 @@
                     <div class="form_row">
                         <label for="psw">设置密码</label>
                         <div class="input_zone">
-                            <input type="password" placeholder="请设置密码" id="psw" ref="r_psw" v-model="fillData.password" v-limit-psw data-psw_statu="" data-tip="" @blur="iptBlur('psw')">
+                            <input type="password" placeholder="请设置密码" id="psw" ref="r_psw" v-model="fillData.password" v-auto-next-ipt="{id:'reg'}" v-limit-psw data-psw_statu="" data-tip="" @blur="iptBlur('psw')">
                             <div :class="{green:this.psw_statu}">{{this.psw_tip}}</div>
                         </div>
 
@@ -40,7 +40,7 @@
                     <div class="form_row">
                         <label for="re_psw">再次输入</label>
                         <div class="input_zone">
-                            <input type="password" placeholder="请重新输入密码" id="re_psw" ref="r_rpsw" @blur="iptBlur('rePsw')">
+                            <input type="password" placeholder="请重新输入密码" id="re_psw" ref="r_rpsw" v-auto-next-ipt="{id:'reg'}" @blur="iptBlur('rePsw')">
                             <div :class="{green:this.rePsw_statu}">{{this.rePsw_tip}}</div>
                         </div>
 
@@ -48,7 +48,11 @@
                 </form>
             </div>
             <div class="fill_ok">
-                <button @click="reg">注册</button>
+                <Tooltip content="存在不正确格式，请核对填写" placement="top" v-if="!(this.mail_statu && this.nick_statu && this.psw_statu && this.rePsw_statu && this.tel_statu)">
+                    <button @click="reg">注册</button>
+                </Tooltip>
+                <button @click="reg" v-else>注册</button>
+
                 <p>点击此按钮，即表示您已阅读并同意遵守此条约</p>
             </div>
         </div>
@@ -75,12 +79,15 @@
               mail_tip:'',
               mail_statu:'',
               rePsw_tip:'',
-              rePsw_statu:''
+              rePsw_statu:'',
+              status:''
           }
         },
         methods:{
             reg(){
-
+                let that = this
+                this.status = this.mail_statu && this.nick_statu && this.psw_statu && this.rePsw_statu && this.tel_statu
+                if(!this.status) return
                 // 注意data里的fillData是__ob__:Observer是不可枚举的
                 let fillData = JSON.parse(JSON.stringify(this.fillData))
                 // 提交注册
@@ -89,6 +96,13 @@
                     )
                     .then((res) => {
                         console.log(res)
+                        // 注册成功需要跳转至登录页面
+                        that.$router.push({
+                            path:'/login',
+                            query:{
+                                nickname:this.fillData.nickname
+                            }
+                        })
                     })
                     .catch((err) => {
                         console.log(err)
@@ -116,9 +130,12 @@
                             this.psw_statu = this.$refs.r_psw.dataset.psw_statu
                             break
                         case 'rePsw':
-                            if(this.$refs.r_rpsw.value === this.$refs.r_psw.value){
+                            if(!!this.$refs.r_rpsw.value && (this.$refs.r_rpsw.value === this.$refs.r_psw.value)){
                                 this.rePsw_statu = true
                                 this.rePsw_tip = '输入正确'
+                            }else if(this.$refs.r_rpsw.value == ''){
+                                this.rePsw_statu = ''
+                                this.rePsw_tip = '输入不能为空'
                             }else{
                                 this.rePsw_statu = ''
                                 this.rePsw_tip = '密码输入不一致'
@@ -133,7 +150,7 @@
 
 <style lang="less" scoped>
     #reg{
-        margin:3rem;
+        margin:2rem;
         width:80%;
         @media (min-width:750px){
             margin-left:5rem;

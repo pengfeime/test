@@ -15,7 +15,6 @@ Vue.config.productionTip = false
 
 // 注册input的全局自定义指令
 directives.forEach((item) => {
-  console.log(item)
   Vue.directive(item.name,item.bind_evt)
 })
 // 全局配置iview的一些属性

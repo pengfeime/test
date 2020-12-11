@@ -1,3 +1,4 @@
+// 指令会对普通DOM元素进行底层操作
 let directives = [
     {
         name: 'limitPsw',
@@ -5,11 +6,13 @@ let directives = [
             bind(el){
                 let pattern = /[0-9a-zA-Z]{6,12}/
                 el.onblur = (e) => {
-                    console.log('hello')
                     let {value} = e.target
                     if(pattern.test(value)){
                         e.target.dataset.tip = '密码格式正确'
                         e.target.dataset.psw_statu = true
+                    }else if(value.trim() == ''){
+                        e.target.dataset.tip = '输入不能为空'
+                        e.target.dataset.psw_statu = ''
                     }else{
                         e.target.dataset.tip = '密码格式不正确'
                         e.target.dataset.psw_statu = ''
@@ -29,8 +32,10 @@ let directives = [
                     if(pattern.test(value)){
                         e.target.dataset.tip = '邮箱格式正确'
                         e.target.dataset.mail_statu = true
+                    }else if(value.trim() == ''){
+                        e.target.dataset.tip = '输入不能为空'
+                        e.target.dataset.mail_statu = ''
                     }else{
-                        console.log('格式不对啊')
                         e.target.dataset.tip = '邮箱格式不正确'
                         e.target.dataset.mail_statu = ''
                     }
@@ -52,6 +57,9 @@ let directives = [
                     if(pattern.test(value)){
                         e.target.dataset.tip = '手机号格式正确'
                         e.target.dataset.tel_statu = true
+                    }else if(value.trim() == ''){
+                        e.target.dataset.tip = '输入不能为空'
+                        e.target.dataset.tel_statu = ''
                     }else{
                         e.target.dataset.tip = '手机号格式不正确'
                         e.target.dataset.tel_statu = ''
@@ -86,6 +94,9 @@ let directives = [
                             tipText = '_字符不能多余一个!'
                             e.target.dataset.nick_statu = ''
                         }
+                    }else if(e.target.value.trim() == ''){
+                        e.target.dataset.tip = '输入不能为空'
+                        e.target.dataset.nick_statu = ''
                     }else{
                         tipText = '格式有误，昵称可包含数字、大小写字母、下划线（不能多于1个）、汉字，总长度在4-12个之间'
                         e.target.dataset.nick_statu = ''
@@ -96,6 +107,33 @@ let directives = [
             }
         }
     },
+    {
+        name:'autoNextIpt', // enter时自动跳转到下一个input
+        bind_evt:{
+            inserted(el,binding){
+                el.addEventListener('keypress',(e) => {
+                    e = e || window.event
+                    // 兼容不同浏览器
+                    let charcode = typeof e.charCode == 'number'?e.charCode:e.keyCode
+                    if(charcode == 13){
+                        // 需要找出本页面的所有input
+                        let inputWrap = document.getElementById(binding.value.id)
+                        let dom = inputWrap.querySelectorAll('input'),
+                            len = dom.length
+                        for(let i=0;i<len;i++){
+                            if(dom[i] == document.activeElement){
+                                if(i == len)return
+                                dom[i].blur()
+                                if(i<len-1){
+                                    dom[i+1].focus()
+                                }
+                                return
+                            }
+                        }
+                    }
+                })
+            }
+        }
+    }
 ]
-console.log('hello')
 export default directives

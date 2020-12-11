@@ -4,7 +4,16 @@ const app = new Koa()
 const router = require('./router')
 const cors = require('koa-cors')
 const bodyparser = require('koa-bodyparser')
-
+const koajwt = require('koa-jwt') // 提供路由权限控制功能，对需要限制的资源进行检查
+const config = require('./token/config')
+// 通过app.use 来调用该中间件，并传入密钥,unless可以指定哪些url可以不要token校验
+// 开启路由验证
+// app.use(koajwt({
+//     secret:config.secret
+// })
+//     .unless({
+//         path:[/login|reg/]
+//     }))
 
 app.use(cors())
 // 在路由匹配前，解决跨域问题 对于任何请求，将先调用此异步函数

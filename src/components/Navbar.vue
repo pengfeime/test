@@ -10,8 +10,12 @@
                 <li><router-link to="/">个人中心</router-link></li>
             </ul>
             <ul class="login">
-                <li><router-link to="/login">登录</router-link></li>
-                <li><router-link to="/reg">注册</router-link></li>
+
+                <div v-if="!this.$store.getters.getToken">
+                    <li><router-link to="/login">登录</router-link></li>
+                    <li><router-link to="/reg">注册</router-link></li>
+                </div>
+                <div v-else><router-link to="/" >个人中心</router-link></div>
             </ul>
         </div>
 
@@ -22,6 +26,11 @@
 <script>
     export default {
         name: "navbar",
+        data(){
+          return {
+
+          }
+        },
         methods:{
         },
         mounted(){

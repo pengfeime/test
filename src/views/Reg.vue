@@ -9,7 +9,7 @@
                         <label for="mail">邮箱</label>
                         <div class="input_zone">
                             <input type="text" placeholder="请输入邮箱号" id="mail" ref="r_mail" v-model="fillData.mail"  v-auto-next-ipt="{id:'reg'}" v-limit-mail data-mail_statu="" data-tip="" @blur="iptBlur('mail')">
-                            <div :class="{green:this.mail_statu}">{{this.mail_tip}}</div>
+                            <div :class="{green:mail_statu}">{{mail_tip}}</div>
                         </div>
 
                     </div>

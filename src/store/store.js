@@ -18,6 +18,9 @@ export default new Vuex.Store({
     mutations:{
         handleTop(state,ontop){ //ontop参数记录了页面是否发生滚动
             return state.isTop = ontop
+        },
+        handleToken(state,statu){
+            return state.isLogin = statu
         }
     },
     actions:{

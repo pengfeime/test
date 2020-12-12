@@ -61,9 +61,19 @@ function findNick(nickname) {
     })
 }
 
+// 登出
+router.get('/logout',async (ctx) => {
+    console.log('前端传来的数据',ctx.request.body)
+    //
+    ctx.body = {
+        status:'200',
+        code:'登出成功'
+    }
+})
 // 核对token
 router.get('/checktoken',async(ctx) => {
-    if(ctx.request.query.Token == 'undefined'){
+    let {nickname,Token} = ctx.request.query
+    if(Token == 'undefined'){
         ctx.body = {
             ReturnCode: 'FAIL',
             ReturnMsg:'token失效',
@@ -71,16 +81,19 @@ router.get('/checktoken',async(ctx) => {
         }
 
     }else{
-        let istoken = await checkToken(ctx.request.query.Token);
-        ctx.body = {
-            ReturnCode: istoken ? "SUCCESS" : 'FAIL',
-            ReturnMsg: istoken ? '操作成功' : 'token失效',
-            TokenInvalid: istoken
-        }
+        let istoken = await checkToken(ctx.request.query.Token,nickname);
+        console.log('istoken',istoken)
+            ctx.body = {
+                ReturnCode: istoken ? "SUCCESS" : 'FAIL',
+                ReturnMsg: istoken ? '操作成功' : 'token失效',
+                TokenInvalid: istoken
+            }
+
     }
 
 
 })
+
 router.post('/login', async (ctx) => {
     console.log('前端提交的数据', ctx.request.body)
     const {nickname, password} = ctx.request.body
@@ -93,7 +106,7 @@ router.post('/login', async (ctx) => {
                     ctx.body = {
                         res: '登录成功',
                         code: '200',
-                        Token:createToken('nickname')
+                        Token:createToken(nickname)
                     }
                 }else{
                     ctx.body = {

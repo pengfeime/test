@@ -112,7 +112,7 @@
                         localStorage.setItem('Token',Token)
                         console.log(localStorage.getItem('Token'))
                         // 再次请求服务器，把token发送给后台
-                        this.$http.get(`http://127.0.0.1:3000/checktoken?Token=${Token}`,{headers: {
+                        this.$http.get(`http://127.0.0.1:3000/checktoken?Token=${Token}&nickname=${nickname}`,{headers: {
                                 // axios默认把数据以json的格式发送给后端，这与后端要求的‘content-Type’不符,需要手动修改
                                 // 改写头部导致后端接收数据格式错误，需要使用qs模块将数据以a=xxx&b=xx
                                 'Content-Type': 'application/x-www-form-urlencoded'
@@ -120,6 +120,9 @@
                             .then((res) => {
                                 console.log(res)
                                 localStorage.setItem('TokenInvalid',res.data.TokenInvalid)
+                                this.$store.commit('handleToken',true)
+                                // 跳转到首页
+                                this.$router.push('/')
                             })
                             .catch((err) => {
                                 console.log(err)

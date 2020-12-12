@@ -2,7 +2,7 @@
     <div id="app">
         <navbar ref="navbar"></navbar>
         <div class="content">
-          <router-view :class="{main:this.$route.path == '/'}" ></router-view>
+          <router-view class="main" ></router-view>
         </div>
         <foot></foot>
     </div>
